@@ -19,13 +19,13 @@ const Rating = ({ isEditable = false, rating, setRating,  ...props}: RatingProps
                         [styles.filled]: i < currentRating,
                         [styles.editable]: isEditable
                     })}
-                    onMouseEnter={() => changeDisplay(i + 1)}
-                    onMouseLeave={() => changeDisplay(rating)}
-                    onClick={() => onClick(i + 1)}
+                    onMouseEnter={(): void => changeDisplay(i + 1)}
+                    onMouseLeave={(): void => changeDisplay(rating)}
+                    onClick={(): void => onClick(i + 1)}
                 >
                     <StarIcon
                         tabIndex={isEditable ? 0 : -1}
-                        onKeyDown={(e: KeyboardEvent<SVGElement>) => isEditable && handleSpace(i + 1, e)}
+                        onKeyDown={(e: KeyboardEvent<SVGElement>): void => isEditable && handleSpace(i + 1, e)}
                     />
                 </span>
             );
