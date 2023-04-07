@@ -11,7 +11,6 @@ const Ptag = ({ children, size = 'medium', classname, ...props}: PtagProps):JSX.
             [styles.large]: size === 'large'
             })}
             {...props}
-
         >
             {children}
         </p>
