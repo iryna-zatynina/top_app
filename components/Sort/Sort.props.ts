@@ -1,7 +1,7 @@
-import {ButtonHTMLAttributes, DetailedHTMLProps, ReactNode} from "react";
+import {DetailedHTMLProps, HTMLAttributes} from "react";
 
 
-export interface SortProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+export interface SortProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
     sort: SortEnum,
     setSort: (sort: SortEnum) => vois
 

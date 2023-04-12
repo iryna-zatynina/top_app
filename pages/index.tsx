@@ -1,4 +1,4 @@
-import {Button, Htag} from "../components";
+import {Button, Htag, Input} from "../components";
 import Ptag from "../components/Ptag/Ptag";
 import Tag from "../components/Tag/Tag";
 import {useState} from "react";
@@ -24,7 +24,7 @@ function Home({ menu }: HomeProps): JSX.Element {
             <Tag color='green'>fff</Tag>
             <Tag color='primary' size="small">fff</Tag>
             <Rating rating={rating} isEditable setRating={setRating}></Rating>
-
+            <Input />
         </>
     );
 }
