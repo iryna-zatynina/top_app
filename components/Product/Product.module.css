@@ -110,3 +110,25 @@
     border-left: 2px solid var(--red);
     padding-left: 15px;
 }
+
+.characteristic {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    padding-right: 60px;
+    font-size: 16px;
+    line-height: 32px;
+    align-items: baseline;
+}
+
+.characteristicName {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 32px;
+}
+
+
+.characteristicDots {
+    border-bottom: 1px dotted var(--gray-light);
+    margin-bottom: 5px;
+}
