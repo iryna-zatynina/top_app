@@ -5,5 +5,5 @@ export interface TagProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElemen
     size?: 'small' | 'medium',
     href?: string,
     color: 'ghost' | 'red' | 'primary' | 'grey' | 'green',
-    classname?
+    className?
 }
