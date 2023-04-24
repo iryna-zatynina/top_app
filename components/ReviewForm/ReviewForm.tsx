@@ -17,6 +17,7 @@ export const ReviewForm = ({productId, className, ...props}: ReviewFormProps): J
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [error, setError] = useState<string>();
 
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     const onSubmit = async (formData: IReviewForm) => {
         try {
             const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, {...formData, productId});
