@@ -1,5 +1,3 @@
-// noinspection TypeScriptValidateTypes
-
 import {ProductProps} from "./Product.props";
 import styles from './Product.module.css';
 import {Card} from "../Card/Card";

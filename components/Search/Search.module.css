@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-.input {
+.input input {
     width: 100%;
 }
 
@@ -13,5 +13,5 @@
     right: 3px;
     width: 30px;
     height: 30px;
-    padding: 7px;
+    padding: 7px !important;
 }

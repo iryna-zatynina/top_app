@@ -7,7 +7,7 @@ import {Button} from "../Button/Button";
 import SearchIcon from "./search.svg";
 import {useRouter} from "next/router";
 
-const Search = ({ classname, ...props}: SearchProps):JSX.Element => {
+const Search = ({ className, ...props}: SearchProps):JSX.Element => {
     const [search, setSearch] = useState<string>('');
     const router = useRouter();
 
@@ -27,7 +27,7 @@ const Search = ({ classname, ...props}: SearchProps):JSX.Element => {
     };
 
     return (
-        <div className={cn(classname, styles.search)} {...props}>
+        <div className={cn(styles.search, className)} {...props}>
             <Input
                 className={styles.input}
                 placeholder='Поиск...'

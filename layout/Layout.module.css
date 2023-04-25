@@ -31,13 +31,14 @@
     .wrapper {
         grid-template-columns: minmax(320px, 1fr);
         grid-template-areas:
-        "header"
-        "body"
-        "footer";
+            "header"
+            "body"
+            "footer";
+        gap: 10px;
     }
 
     .header {
-        display: block;
+        display: grid;
     }
 
     .sidebar {
