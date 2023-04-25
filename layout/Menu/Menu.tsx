@@ -30,7 +30,7 @@ const Menu = ():JSX.Element => {
     const variantsChildren = {
         visible: {
             opacity: 1,
-            height: 29
+            height: "min-content"
         },
         hidden: {
             opacity: 0,
@@ -101,7 +101,6 @@ const Menu = ():JSX.Element => {
                         {p.category}
                     </Link>
                 </motion.div>
-
             ))
         );
     };
