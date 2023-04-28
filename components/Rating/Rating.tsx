@@ -1,15 +1,29 @@
-import React, {useEffect, useState, KeyboardEvent, ForwardedRef, forwardRef, useRef, KeyboardEventHandler} from 'react';
+import React, {useEffect, useState, KeyboardEvent, ForwardedRef, forwardRef, useRef} from 'react';
 import {RatingProps} from "./Rating.props";
 import StarIcon from "./star.svg";
 import styles from "./Rating.module.css";
 import cn from "classnames";
 
-const Rating = forwardRef(({ isEditable = false, rating, setRating, error, ...props}: RatingProps, ref: ForwardedRef<HTMLDivElement>):JSX.Element => {
+const Rating = forwardRef(({ isEditable = false, rating, setRating, error, tabIndex, ...props}: RatingProps, ref: ForwardedRef<HTMLDivElement>):JSX.Element => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
+    const ratingArrayRef = useRef<(HTMLSpanElement | null)[]>([]);
 
     useEffect(() => {
         constructRating(rating);
     }, [rating]);
+
+    const computeFocus = (r: number, i: number): number => {
+        if (!isEditable) {
+            return -1;
+        }
+        if (!rating && i == 0) {
+            return tabIndex ?? 0;
+        }
+        if (r == i + 1) {
+            return tabIndex ??  0;
+        }
+        return -1;
+    };
 
     const constructRating = (currentRating: number) => {
         const updatedRating = ratingArray.map((r: JSX.Element, i: number) => {
@@ -22,8 +36,9 @@ const Rating = forwardRef(({ isEditable = false, rating, setRating, error, ...pr
                     onMouseEnter={(): void => changeDisplay(i + 1)}
                     onMouseLeave={(): void => changeDisplay(rating)}
                     onClick={(): void => onClick(i + 1)}
-                    tabIndex={isEditable ? 0 : -1}
-                    onKeyDown={() => handleKey}
+                    tabIndex={computeFocus(rating, i)}
+                    onKeyDown={handleKey}
+                    ref={r => ratingArrayRef.current?.push(r)}
                 >
                     <StarIcon />
                 </span>
@@ -46,7 +61,7 @@ const Rating = forwardRef(({ isEditable = false, rating, setRating, error, ...pr
         setRating(i);
     };
 
-    const handleKey = (i: number, e: KeyboardEvent): KeyboardEventHandler<HTMLSpanElement> | undefined => {
+    const handleKey = (e: KeyboardEvent) => {
         if (!isEditable || !setRating) {
             return;
         }
@@ -57,12 +72,16 @@ const Rating = forwardRef(({ isEditable = false, rating, setRating, error, ...pr
                 e.preventDefault();
                 setRating(rating < 5 ? rating + 1 : 5);
             }
+            ratingArrayRef.current[rating]?.focus();
         }
-        if (e.code === 'ArrowRight' || e.code === 'ArrowUp') {
+        if (e.code === 'ArrowDown' || e.code === 'ArrowLeft') {
             e.preventDefault();
             setRating(rating > 1 ? rating - 1 : 1);
+            ratingArrayRef.current[rating - 2]?.focus();
         }
     };
+
+
 
     return (
         <div className={cn(styles.ratingWrapper, {

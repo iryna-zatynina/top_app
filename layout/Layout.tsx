@@ -30,7 +30,7 @@ const Layout = ({ children }: LayoutProps):JSX.Element => {
                 className={cn(styles.skipLink, {
                     [styles.displayed]: isSkipLinkDisplayed
                 })}
-                onKeyDown={() => skipContentAction}
+                onKeyDown={skipContentAction}
             >Сразу к содержанию</a>
             <Header className={styles.header}/>
             <Sidebar className={styles.sidebar}/>
