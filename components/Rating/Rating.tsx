@@ -10,7 +10,7 @@ const Rating = forwardRef(({ isEditable = false, rating, setRating, error, tabIn
 
     useEffect(() => {
         constructRating(rating);
-    }, [rating]);
+    }, [rating, tabIndex]);
 
     const computeFocus = (r: number, i: number): number => {
         if (!isEditable) {

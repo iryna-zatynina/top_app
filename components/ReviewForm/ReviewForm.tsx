@@ -17,7 +17,6 @@ export const ReviewForm = ({productId, className, isOpened, ...props}: ReviewFor
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [error, setError] = useState<string>();
 
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     const onSubmit = async (formData: IReviewForm) => {
         try {
             const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, {...formData, productId});
@@ -39,14 +38,14 @@ export const ReviewForm = ({productId, className, isOpened, ...props}: ReviewFor
                     {...register('name', {required: {value: true, message: "Заполните форму"}})}
                     placeholder="Имя"
                     error={errors.name}
-                    tabIndex={isOpened ? 0 : 1}
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <Input
                     {...register('title', {required: {value: true, message: "Заполните заголовок"}})}
                     placeholder="Заголовок отзыва"
                     className={styles.title}
                     error={errors.title}
-                    tabIndex={isOpened ? 0 : 1}
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <div className={styles.rating}>
                     <span>Оценка:</span>
@@ -60,7 +59,9 @@ export const ReviewForm = ({productId, className, isOpened, ...props}: ReviewFor
                                 isEditable
                                 rating={field.value}
                                 ref={field.ref}
-                                setRating={field.onChange} />
+                                setRating={field.onChange}
+                                tabIndex={isOpened ? 0 : -1}
+                            />
                         )}
                     />
                 </div>
@@ -69,10 +70,10 @@ export const ReviewForm = ({productId, className, isOpened, ...props}: ReviewFor
                     placeholder="Текст отзыва"
                     className={styles.description}
                     error={errors.description}
-                    tabIndex={isOpened ? 0 : 1}
+                    tabIndex={isOpened ? 0 : -1}
                 />
                 <div className={styles.submit}>
-                    <Button appearance="primary" tabIndex={isOpened ? 0 : 1}>Отправить</Button>
+                    <Button appearance="primary" tabIndex={isOpened ? 0 : -1}>Отправить</Button>
                     <span className={styles.info}>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
                 </div>
             </div>
