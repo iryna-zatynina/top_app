@@ -1,4 +1,4 @@
-import React, {useEffect, useState, KeyboardEvent, ForwardedRef, forwardRef} from 'react';
+import React, {useEffect, useState, KeyboardEvent, ForwardedRef, forwardRef, useRef, KeyboardEventHandler} from 'react';
 import {RatingProps} from "./Rating.props";
 import StarIcon from "./star.svg";
 import styles from "./Rating.module.css";
@@ -22,11 +22,10 @@ const Rating = forwardRef(({ isEditable = false, rating, setRating, error, ...pr
                     onMouseEnter={(): void => changeDisplay(i + 1)}
                     onMouseLeave={(): void => changeDisplay(rating)}
                     onClick={(): void => onClick(i + 1)}
+                    tabIndex={isEditable ? 0 : -1}
+                    onKeyDown={() => handleKey}
                 >
-                    <StarIcon
-                        tabIndex={isEditable ? 0 : -1}
-                        onKeyDown={(e: KeyboardEvent<SVGElement>): void => isEditable && handleSpace(i + 1, e)}
-                    />
+                    <StarIcon />
                 </span>
             );
         });
@@ -47,11 +46,22 @@ const Rating = forwardRef(({ isEditable = false, rating, setRating, error, ...pr
         setRating(i);
     };
 
-    const handleSpace = (i: number, e: KeyboardEvent<SVGElement>) => {
-        if (e.code != 'Space' || !setRating) {
+    const handleKey = (i: number, e: KeyboardEvent): KeyboardEventHandler<HTMLSpanElement> | undefined => {
+        if (!isEditable || !setRating) {
             return;
         }
-        setRating(i);
+        if (e.code === 'ArrowRight' || e.code === 'ArrowUp') {
+            if (!rating) {
+                setRating(1);
+            } else {
+                e.preventDefault();
+                setRating(rating < 5 ? rating + 1 : 5);
+            }
+        }
+        if (e.code === 'ArrowRight' || e.code === 'ArrowUp') {
+            e.preventDefault();
+            setRating(rating > 1 ? rating - 1 : 1);
+        }
     };
 
     return (

@@ -1,6 +1,6 @@
 import {Button, Htag, Input} from "../components";
 import Ptag from "../components/Ptag/Ptag";
-import Tag from "../components/Tag/Tag";
+import { Tag} from "../components";
 import {useState} from "react";
 import Rating from "../components/Rating/Rating";
 import {withLayout} from "../layout/Layout";
