@@ -5,6 +5,7 @@ import {TopLevelCategory} from "../../interfaces/page.interface";
 import {SortEnum} from "../../components/Sort/Sort.props";
 import {sortReducer} from "./sort.reducer";
 import {useEffect, useReducer} from "react";
+import {declOfNum} from "../../helpers/helpers";
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
     const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
@@ -19,7 +20,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
         <>
             <div className={styles.title}>
                 <Htag tag='h1'>{page.title}</Htag>
-                {products && <Tag color='grey' size='medium'>{products.length}</Tag>}
+                {products && <Tag color='grey' size='medium' aria-label={declOfNum(products.length, ['элемент', 'элемента', 'элементов'])}>{products.length}</Tag>}
                 <Sort sort={sort} setSort={setSort} />
             </div>
             <div>

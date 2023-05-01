@@ -120,9 +120,9 @@ const Menu = ():JSX.Element => {
     };
 
     return (
-        <div className={styles.menu}>
+        <nav role='navigation'>
             {buildFirstLevel()}
-        </div>
+        </nav>
     );
 };
 
