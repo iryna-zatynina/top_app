@@ -1,67 +1,73 @@
 .wrapper {
-    display: grid;
-    min-height: 100vh;
-    gap: 40px 30px;
-    grid-template-columns: auto 230px minmax(320px, 1200px) auto;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        ". header header ."
-        ". sidebar body ."
-        "footer footer footer footer";
+	display: grid;
+
+	min-height: 100vh;
+	gap: 40px 30px;
+	grid-template-columns: auto 230px minmax(320px, 1200px) auto;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		". header header ."
+		". sidebar body ."
+		"footer footer footer footer";
 }
 
 .header {
-    grid-area: header;
-    display: none;
+	grid-area: header;
+
+	display: none;
 }
 
 .body {
-    grid-area: body;
-    outline: none;
+	grid-area: body;
+
+	outline: none;
 }
 
 .sidebar {
-    grid-area: sidebar;
+	grid-area: sidebar;
 }
 
 .footer {
-    grid-area: footer;
+	grid-area: footer;
 }
 
 .skipLink {
-    position: fixed;
-    top: 0;
-    left: 100px;
-    display: block;
-    overflow: hidden;
-    height: 0;
-    color: var(--white);
-    background: var(--primary);
+	position: fixed;
+	top: 0;
+	left: 100px;
+
+	display: block;
+	overflow: hidden;
+
+	height: 0;
+
+	color: var(--white);
+	background: var(--primary);
 }
 
 .displayed {
-    height: auto;
+	height: auto;
 }
 
 @media (max-width: 765px) {
-    .wrapper {
-        grid-template-columns: minmax(320px, 1fr);
-        grid-template-areas:
-            "header"
-            "body"
-            "footer";
-        gap: 10px;
-    }
+	.wrapper {
+		grid-template-columns: minmax(320px, 1fr);
+		grid-template-areas:
+			"header"
+			"body"
+			"footer";
+		gap: 10px;
+	}
 
-    .header {
-        display: grid;
-    }
+	.header {
+		display: grid;
+	}
 
-    .sidebar {
-        display: none !important;
-    }
+	.sidebar {
+		display: none !important;
+	}
 
-    .body {
-        padding: 14px;
-    }
+	.body {
+		padding: 14px;
+	}
 }

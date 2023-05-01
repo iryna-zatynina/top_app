@@ -24,10 +24,12 @@ p {
 }
 
 .visuallyHidden {
+	position: absolute;
+
+	overflow: hidden;
+
 	width: 0;
 	height: 0;
-	overflow: hidden;
-	position: absolute;
 }
 
 :root {
@@ -37,7 +39,7 @@ p {
 	--gray-dark: #6C7077;
 	--white: white;
 	--primary: #7351F5;
-	--primary-hover: #5b3fd0;
+	--primary-hover: #5B3FD0;
 	--red-light: #FEA291;
 	--red: #FC836D;
 	--green: #007B48;
