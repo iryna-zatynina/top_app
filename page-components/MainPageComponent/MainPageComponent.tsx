@@ -4,6 +4,9 @@ import Search from "../../components/Search/Search";
 import Link from "next/link";
 import styles from "./MainPageComponent.module.css";
 import {MainPageComponentProps} from './MainPageComponent.props';
+import axios from "axios/index";
+import {MenuItem} from "../../interfaces/menu.interface";
+import {API} from "../../helpers/api";
 
 
 const MainPageComponent = ({}: MainPageComponentProps): JSX.Element => {

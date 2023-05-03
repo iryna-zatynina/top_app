@@ -1,12 +1,15 @@
 .h1 {
-	margin: 0 0 20px 0;
+	margin: 0 0 20px;
+
+	color: var(--primary);
+
 	font-size: 3rem;
 	line-height: 1;
-	color: var(--primary);
 }
 
 .h2 {
 	margin: 0;
+
 	font-size: 2rem;
 	line-height: 3.5rem;
 }

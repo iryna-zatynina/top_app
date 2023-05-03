@@ -1,22 +1,25 @@
 .wrapper {
-    display: grid;
-    grid-template-columns:  auto auto;
-    gap: 20px;
-    align-content: start;
-    padding: 50px 5%;
+	display: grid;
+	grid-template-columns:  auto auto;
+	gap: 20px;
+
+	align-content: start;
+
+	padding: 50px 5%;
 }
 
 .img {
-    grid-row: 1  / 5;
-    grid-column: 2 / 3;
+	grid-row: 1  / 5;
+	grid-column: 2 / 3;
 
 }
 
 .findLink {
-    text-decoration: underline;
-    color: var(--primary);
+	text-decoration: underline;
+
+	color: var(--primary);
 }
 
 .findLink:hover {
-    color: var(--black);
+	color: var(--black);
 }
