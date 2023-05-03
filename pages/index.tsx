@@ -1,36 +1,22 @@
-import {Button, Htag, Input} from "../components";
-import Ptag from "../components/Ptag/Ptag";
-import { Tag} from "../components";
-import {useState} from "react";
-import Rating from "../components/Rating/Rating";
 import {withLayout} from "../layout/Layout";
 import {GetStaticProps} from "next";
 import axios from 'axios';
 import {MenuItem} from "../interfaces/menu.interface";
 import {API} from "../helpers/api";
+import MainPageComponent from "../page-components/MainPageComponent/MainPageComponent";
 
 
-function Home({ menu }: HomeProps): JSX.Element {
-    const [rating, setRating] = useState<number>(4);
-
+function Home({  products}: HomeProps): JSX.Element {
+    console.log(products);
     return (
         <>
-            <Htag tag='h1'>counter</Htag>
-            <Button appearance='primary' arrow='right' >Text</Button>
-            <Button appearance='ghost' arrow='down'>Text</Button>
-            <Ptag size='small'>hello</Ptag>
-            <Ptag size='medium'>hello</Ptag>
-            <Ptag size='large'>hello</Ptag>
-            <Ptag>hello</Ptag>
-            <Tag color='green'>fff</Tag>
-            <Tag color='primary' size="small">fff</Tag>
-            <Rating rating={rating} isEditable setRating={setRating}></Rating>
-            <Input />
+            <MainPageComponent />
         </>
     );
 }
 
 export default withLayout(Home);
+
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     const firstCategory = 0;

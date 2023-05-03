@@ -7,7 +7,7 @@ import {Button} from "../Button/Button";
 import SearchIcon from "./search.svg";
 import {useRouter} from "next/router";
 
-const Search = ({ className, ...props}: SearchProps):JSX.Element => {
+const Search = ({placeholder, className, ...props}: SearchProps):JSX.Element => {
     const [search, setSearch] = useState<string>('');
     const router = useRouter();
 
@@ -20,7 +20,7 @@ const Search = ({ className, ...props}: SearchProps):JSX.Element => {
         });
     };
 
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             goToSearch();
         }
@@ -30,7 +30,7 @@ const Search = ({ className, ...props}: SearchProps):JSX.Element => {
         <form className={cn(styles.search, className)} {...props} role="search">
             <Input
                 className={styles.input}
-                placeholder='Поиск...'
+                placeholder={placeholder}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 onKeyDown={handleKeyDown}

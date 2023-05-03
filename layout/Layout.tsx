@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useRef, useState} from 'react';
+import React, {FunctionComponent, KeyboardEventHandler, useRef, useState} from 'react';
 import {LayoutProps} from "./Layout.props";
 import Header from "./Header/Header";
 import Sidebar from "./Sidebar/Sidebar";
@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps):JSX.Element => {
     const [isSkipLinkDisplayed, setIsSkipLinkDisplayed] = useState<boolean>(false);
     const bodyRef = useRef<HTMLDivElement>(null);
 
-    const skipContentAction = (key: KeyboardEvent) => {
+    const skipContentAction = (key) => {
         if (key.code === 'Space' || key.code === 'Enter') {
             key.preventDefault();
             bodyRef.current.focus();
