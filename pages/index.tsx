@@ -6,7 +6,7 @@ import {API} from "../helpers/api";
 import MainPageComponent from "../page-components/MainPageComponent/MainPageComponent";
 
 
-function Home({}: HomeProps): JSX.Element {
+function Home(): JSX.Element {
     return (
         <>
             <MainPageComponent />
