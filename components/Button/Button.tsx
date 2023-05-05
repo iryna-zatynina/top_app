@@ -4,7 +4,7 @@ import cn from 'classnames';
 import ArrowIcon from './arrow.svg';
 import {motion} from "framer-motion";
 
-export const Button = ({ children, arrow = 'none', appearance, className}: ButtonProps): JSX.Element => {
+export const Button = ({ children, arrow = 'none', appearance, className, onClick}: ButtonProps): JSX.Element => {
     return (
         <motion.button
             whileHover={{scale: 1.05}}
@@ -12,6 +12,7 @@ export const Button = ({ children, arrow = 'none', appearance, className}: Butto
                 [styles.primary]: appearance === 'primary',
                 [styles.ghost]: appearance === 'ghost'
             })}
+            onClick={onClick}
         >
             {children}
             {arrow != 'none' && <span className={cn(styles.arrow, {
